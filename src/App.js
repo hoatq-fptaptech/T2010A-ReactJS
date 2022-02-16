@@ -4,6 +4,11 @@ import React from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import {BrowserRouter,Routes,Route} from "react-router-dom";
+import Home from "./pages/Home";
+import Categories from "./pages/Categories";
+import Detail from "./pages/Detail";
+
 class App extends React.Component{
     constructor(props) {
         super(props);
@@ -69,8 +74,16 @@ class App extends React.Component{
   render(){
       var list = this.state.list;
     return (
+        <BrowserRouter>
         <div className="App">
             <Header/>
+            <div className="container">
+                <Routes>
+                    <Route path="/" exact element={<Home/>}/>
+                    <Route path="/categories" exact element={<Categories/>}/>
+                    <Route path="/detail" exact element={<Detail/>}/>
+                </Routes>
+            </div>
             <div className="container">
                 <form onSubmit={this.formSubmit}>
                     <div className="form-group">
@@ -91,6 +104,7 @@ class App extends React.Component{
 
             <Footer/>
         </div>
+        </BrowserRouter>
     );
   }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import {Adapter,API_URL} from "../Adapter";
+import {Link} from "react-router-dom";
 
 export default class Header extends React.Component{
     constructor(props) {
@@ -51,6 +52,9 @@ export default class Header extends React.Component{
                     </div>
                 </form>
             <ul>
+                <li key="li-1"><Link to="/">Home</Link></li>
+                <li key="li-2"><Link to="/categories">Categories</Link></li>
+                <li key="li-3"><Link to="/detail">Detail</Link></li>
                 {
                     cats.map((e,k)=>{
                         return <li key={k}><a href="#">{e.categoryName}</a> </li>
