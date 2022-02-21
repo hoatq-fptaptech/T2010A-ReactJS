@@ -1,4 +1,3 @@
-import {act} from "@testing-library/react";
 
 const INIT_STATE = {
     cart_item:0,
@@ -21,7 +20,7 @@ export function reducer(state= INIT_STATE,action) {
                 cart_item: cart_item+1,
                 items: items
             }
-            localStorage.setItem("cart",new_cart);
+            localStorage.setItem("cart",JSON.stringify(new_cart));
             state = new_cart;
             return state;
         }

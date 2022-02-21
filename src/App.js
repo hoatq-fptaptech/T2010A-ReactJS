@@ -8,6 +8,7 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Home from "./pages/Home";
 import Categories from "./pages/Categories";
 import Detail from "./pages/Detail";
+import {connect} from "react-redux";
 
 class App extends React.Component{
     constructor(props) {
@@ -71,7 +72,11 @@ class App extends React.Component{
         p[e.target.name] = e.target.value;
         this.setState({product:p});
     }
-  render(){
+    componentDidMount() {
+        this.props.loadCart();
+    }
+
+    render(){
       var list = this.state.list;
     return (
         <BrowserRouter>
@@ -110,4 +115,11 @@ class App extends React.Component{
 
 }
 // passing data from parent to child component
-export default App;
+const mapDispatchToProps = (dispatch)=>{
+    return {
+        loadCart: ()=>{
+            dispatch({type:"load_cart"});
+        }
+    }
+}
+export default connect(null,mapDispatchToProps)(App);
